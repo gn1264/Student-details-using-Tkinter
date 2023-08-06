@@ -1,0 +1,45 @@
+from tkinter import *
+import tkinter as tk
+from tkinter import messagebox
+def click():
+	str= ""
+	gen="female"
+	i = listbox.curselection()
+	if v4.get()==0:
+		gen="male"
+	str = "Fname ",v1.get()," Lname ",v2.get()," Age ",v3.get() ," Gender ",gen, " Dept ",listbox.get(i)
+	messagebox.showinfo("Signup",str)
+root=Tk()
+root.title("Signup")
+root.geometry("300x200")
+firstname = Label(root, text="Firstname")
+firstname.grid(row=0,column=0)
+v1 = tk.StringVar()
+e1 = Entry(root,textvariable=v1)
+e1.grid(row=0,column=1)
+lastname = Label(root, text="Lastname")
+lastname.grid(row=1,column=0)
+v2 = tk.StringVar()
+e2 = Entry(root,textvariable=v2)
+e2.grid(row=1,column=1)
+age = Label(root, text="Age")
+age.grid(row=2,column=0)
+gender = Label(root, text="Gender")
+gender.grid(row=3,column=0)
+v3=tk.IntVar()
+e3=Scale(root,from_=17,to=25,variable=v3,orient=HORIZONTAL)
+e3.grid(row=2,column=1)
+v4=tk.IntVar()
+e4=Radiobutton(root,text="Male",value=0,variable=v4)
+e4.grid(row=3,column=1)
+e5=Radiobutton(root,text="Female",value=1,variable=v4)
+e5.grid(row=3,column=2)
+dept = Label(root, text="Dept")
+dept.grid(row=4,column=0)
+dpt = ('CINTEL','DSBS','CTECH','NWC')
+var = tk.Variable(value=dpt)
+listbox =Listbox(root,listvariable=var,height=4)
+listbox.grid(row=4,column=1)
+b1= Button(root,text="Submit", command=click)
+b1.grid(row=5,column=0, columnspan=2)
+root.mainloop()
